@@ -1,0 +1,166 @@
+rbac:
+  readSecrets: true
+master:
+  initScripts:
+    - |
+      System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'America/Argentina/Buenos_Aires')
+  JCasC:
+    defaultConfig: false
+    configScripts:
+      jenkins-settings: |
+        jenkins:
+          crumbIssuer:
+            standard:
+              excludeClientIPFromCrumb: true
+          globalNodeProperties:
+          - envVars:
+              env:
+              - key: "BITBUCKET_URL"
+                value: "https://bitbucket.org/agrofydev"
+              - key: "SLACK_URL"
+                value: "https://agrofy.slack.com/services/hooks/jenkins-ci"
+              - key: "JENKINS_PIPELINES_PROJ"
+                value: "eks-jenkins-pipelines"
+              - key: "DOCKER_IMAGES_PROJ"
+                value: "docker-images"
+              - key: "WINDOWS_BUILD_SERVER"
+                value: "eks-windows-build-server.prod-us-1.eks.agrofy.com"
+          numExecutors: 10
+          remotingSecurity:
+            enabled: true
+          securityRealm:
+            googleOAuth2:
+              clientId: "20945731564-f26k0rs4jc5ngp1ncsnfvaae240de6mv.apps.googleusercontent.com"
+              clientSecret: ${GOOGLE_OAUTH2_CLIENT}
+              domain: "agrofy.com"
+#JCASC_ROLES#
+
+#JCASC_K8S#
+
+        unclassified:
+          email-ext:
+            allowedDomains: "@agrofy.com"
+            mailAccount:
+              smtpHost: "smtp.gmail.com"
+              smtpPassword: ${CRED_JENKINS_SMTP_PASSWD}
+              smtpPort: "465"
+              smtpUsername: "jenkins@agrofy.com"
+              useSsl: true
+          globalLibraries:
+            libraries:
+            - defaultVersion: "master"
+              name: "eks-jenkins-shared-library"
+              retriever:
+                modernSCM:
+                  scm:
+                    git:
+                      credentialsId: "BBsvcAccnt"
+                      remote: "https://bitbucket.org/agrofydev/eks-jenkins-pipelines.git"
+                      traits:
+                      - "gitBranchDiscovery"
+          location:
+            adminAddress: "devops@agrofy.com"
+            url: "https://jenkins.prod-us-1.eks.agrofy.com/"
+          sonarGlobalConfiguration:
+            buildWrapperEnabled: true
+            installations:
+            - credentialsId: "sonarqubeToken"
+              name: "SonarQube Agrofy Server"
+              serverUrl: "http://sonarqube-sonarqube.devops.svc:9000"
+              triggers:
+                skipScmCause: false
+                skipUpstreamCause: false
+#JCASC_CREDENTIALS#
+
+        jobs:
+#JCASC_JOBS_DEVOPS#
+
+#JCASC_JOBS_REGISTRY#
+
+#JCASC_JOBS_ACCOUNTS#
+
+#JCASC_JOBS_CDO#
+
+#JCASC_JOBS_CATALOG#
+
+#JCASC_JOBS_DETALLE_PRODUCTO#
+
+#JCASC_JOBS_MERCHANT#
+
+#JCASC_JOBS_LISTING#
+
+#JCASC_JOBS_TEST_AUTOMATION#
+
+#JCASC_JOBS_HOME#
+
+#JCASC_JOBS_NEWS#
+
+#JCASC_JOBS_AGROSHOP_TASKS#
+
+#JCASC_JOBS_LOGIN_UI#
+
+#JCASC_JOBS_PAYMENT#
+
+#JCASC_JOBS_MESSENGER#
+
+#JCASC_JOBS_SALES#
+
+#JCASC_JOBS_BULK#
+
+#JCASC_JOBS_BULK_UI#
+
+#JCASC_JOBS_JOIN#
+
+#JCASC_JOBS_AGROSHOPUI#
+
+#JCASC_JOBS_HOME_REPUESTOS#
+
+#JCASC_JOBS_CHECKOUT#
+
+#JCASC_JOBS_SERVICES_LAYER#
+
+#JCASC_JOBS_BACKOFFICE_UI#
+
+#JCASC_JOBS_BACKOFFICE#
+
+#JCASC_JOBS_VOUCHERIFY#
+
+#JCASC_JOBS_AGROFYUIC#
+
+#JCASC_JOBS_WEBPUSH_CUSTOMACTIVITY#
+
+#JCASC_JOBS_LISTING_UI#
+
+#JCASC_JOBS_LEADS#
+
+#JCASC_JOBS_DEALER_STOCKPRICE#
+
+#JCASC_JOBS_AGROFYLIBRARY_NPM#
+
+#JCASC_JOBS_ACCOUNT_UI#
+
+#JCASC_JOBS_MAGENTO#
+
+#JCASC_JOBS_DEVELOPERS#
+
+#JCASC_JOBS_AGROFY_SEO#
+
+#JCASC_JOBS_CRON_JOBS#
+
+  sidecars:
+    configAutoReload:
+      env:
+        - name: REQ_TIMEOUT
+          value: "300"
+  containerEnv:
+    - name: SECRETS
+      value: /secrets/jcasc
+persistence:
+  volumes:
+    - name: jcasc-secrets
+      secret:
+        secretName: jcasc-secret
+  mounts:
+    - name: jcasc-secrets
+      mountPath: /secrets/jcasc
+      readOnly: true
