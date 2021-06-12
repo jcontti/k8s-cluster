@@ -17,7 +17,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-              image = docker.build(dockerImage, "${pipelineParams.buildArgs} .")
+              image = docker.build()
           }
         }
       }
