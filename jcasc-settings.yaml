@@ -49,12 +49,12 @@ master:
                 description('Folder for Devops utils')
             }
         - script: >
-            folder('devops/docker-images') {
-                displayName('Docker images')
-                description('Folder for Docker images')
+            folder('devops/myapp') {
+                displayName('My apps')
+                description('Folder for My apps')
             }
         - script: >
-            pipelineJob('devops/docker-images/jenkins-lighthouse') {
+            pipelineJob('devops/myapp/jenkins-app') {
               environmentVariables {
                 keepBuildVariables(true)
                 keepSystemVariables(true)
@@ -67,7 +67,7 @@ master:
                         url '\$GITHUB_URL/\$JENKINS_PIPELINES_PROJ.git'
                         credentials 'GHsvcAccnt'
                       }
-                      branch 'master'
+                      branch '*/master'
                       extensions {}
                     }
                   }
