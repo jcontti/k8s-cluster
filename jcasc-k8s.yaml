@@ -1,0 +1,89 @@
+  clouds:
+  - kubernetes:
+      containerCapStr: "10"
+      jenkinsTunnel: "jenkins-agent:50000"
+      jenkinsUrl: "http://jenkins:8080"
+      maxRequestsPerHostStr: "32"
+      name: "kubernetes"
+      namespace: "jenkins"
+      serverUrl: "https://kubernetes.default.svc/"
+      skipTlsVerify: true
+      templates:
+      - containers:
+        - name: "jnlp"
+          image: "jenkins/inbound-agent:4.3-6"
+          alwaysPullImage: true
+          command: ""
+          args: ""
+          envVars:
+          - envVar:
+              key: "DOCKER_HOST"
+              value: "tcp://localhost:2375"
+          resourceRequestCpu: "100m"
+          resourceRequestMemory: "250Mi"
+          livenessProbe:
+            failureThreshold: 0
+            initialDelaySeconds: 0
+            periodSeconds: 0
+            successThreshold: 0
+            timeoutSeconds: 0
+          ttyEnabled: true
+        label: "mgmt-slave"
+        name: "mgmt-slave"
+        namespace: "jenkins"
+        volumes:
+        - secretVolume:
+            mountPath: "/.kube"
+            secretName: "kubeconfig"
+        workspaceVolume:
+          emptyDirWorkspaceVolume:
+            memory: false
+        yamlMergeStrategy: "override"
+      - containers:
+        - name: "jnlp"
+          image: "jenkins/inbound-agent:4.3-6"
+          alwaysPullImage: true
+          command: ""
+          args: ""
+          envVars:
+          - envVar:
+              key: "DOCKER_HOST"
+              value: "tcp://localhost:2375"
+          resourceRequestCpu: "100m"
+          resourceRequestMemory: "250Mi"
+          livenessProbe:
+            failureThreshold: 0
+            initialDelaySeconds: 0
+            periodSeconds: 0
+            successThreshold: 0
+            timeoutSeconds: 0
+          ttyEnabled: true
+        - name: "dind"
+          image: "docker:19.03.9-dind"
+          alwaysPullImage: true
+          command: ""
+          args: ""
+          resourceRequestCpu: "500m"
+          resourceRequestMemory: "900Mi"
+          livenessProbe:
+            failureThreshold: 0
+            initialDelaySeconds: 0
+            periodSeconds: 0
+            successThreshold: 0
+            timeoutSeconds: 0
+          privileged: true
+          ttyEnabled: true
+        label: "docker-slave"
+        name: "docker-slave"
+        namespace: "jenkins"
+        volumes:
+        - secretVolume:
+            mountPath: "/.kube"
+            secretName: "kubeconfig"
+        - secretVolume:
+            mountPath: "/.registry"
+            secretName: "registry-secret"
+        workspaceVolume:
+          emptyDirWorkspaceVolume:
+            memory: false
+        yamlMergeStrategy: "override"
