@@ -10,11 +10,7 @@
 } */
 
 pipeline {
-  agent {
-    label {
-      label "docker-slave"
-    }
-  }
+  agent any
   environment {
     GITHUB_PROJECT = 'https://github.com/guipal/apiSampleJava'
   }
