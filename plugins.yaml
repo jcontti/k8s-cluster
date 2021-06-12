@@ -18,3 +18,4 @@ master:
     - command-launcher:1.5
     - configuration-as-code:1.51
     - job-dsl:1.77
+    - workflow-job:2.40
