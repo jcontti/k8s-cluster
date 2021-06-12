@@ -84,8 +84,8 @@ master:
                   alwaysPullImage: true
                   command: ""
                   args: ""
-                  resourceRequestCpu: "500m"
-                  resourceRequestMemory: "900Mi"
+                  resourceRequestCpu: "400m"
+                  resourceRequestMemory: "500Mi"
                   livenessProbe:
                     failureThreshold: 0
                     initialDelaySeconds: 0
@@ -97,13 +97,6 @@ master:
                 label: "docker-slave"
                 name: "docker-slave"
                 namespace: "jenkins"
-                volumes:
-                - secretVolume:
-                    mountPath: "/.kube"
-                    secretName: "kubeconfig"
-                - secretVolume:
-                    mountPath: "/.registry"
-                    secretName: "registry-secret"
                 workspaceVolume:
                   emptyDirWorkspaceVolume:
                     memory: false

@@ -11,14 +11,13 @@ helm repo update
  helm upgrade jenkins jenkinsci/jenkins --version 2.19.0 -n jenkins -i \
    --set master.tag=2.287                                        \
    --set master.serviceType=NodePort                             \
-   --set master.resources.requests.cpu=2000m                     \
-   --set master.resources.requests.memory=1000Mi                 \
+   --set master.resources.requests.cpu=1800m                     \
+   --set master.resources.requests.memory=1500Mi                 \
+   --set master.resources.limits.cpu=2000m                       \
+   --set master.resources.limits.memory=3000Mi                   \
    --set serviceAccount.create=false                             \
     -f plugins.yaml                                              \
     -f jcasc-settings.yaml
-
-#chart=jenkinsci/jenkins
-#helm install jenkins -n jenkins -f jenkins-values.yaml $chart
 
 
 # Get your 'admin' user password by running
