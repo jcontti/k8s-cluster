@@ -19,19 +19,6 @@ master:
                 value: "https://github.com/jcontti"
               - key: "JENKINS_PIPELINES_PROJ"
                 value: "k8s-cluster"
-        unclassified:
-          globalLibraries:
-            libraries:
-            - defaultVersion: "master"
-              name: "jenkins-shared-library"
-              retriever:
-                modernSCM:
-                  scm:
-                    git:
-                      credentialsId: "GHsvcAccnt"
-                      remote: "https://github.com/jcontti/k8s-cluster.git"
-                      traits:
-                      - "gitBranchDiscovery"
         credentials:
           system:
             domainCredentials:
@@ -71,7 +58,7 @@ master:
                       extensions {}
                     }
                   }
-                  scriptPath 'pipelines/my_app.groovy'
+                  scriptPath 'pipelines/my_app_pipeline.groovy'
                 }
               }
               logRotator {
