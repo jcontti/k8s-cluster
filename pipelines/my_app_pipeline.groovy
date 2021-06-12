@@ -28,20 +28,6 @@ def call(body) {
             }
           }
         }
-    /* 			stage('Push docker image') {
-          steps {
-            container('dind') {
-              withAWS(region: config.region, credentials: config.awsCred) {
-                sh ecrLogin()
-                script {
-                  random_suffix = utils.getRandomString(5)
-                  image.push("${BUILD_NUMBER}-${random_suffix}")
-                  image.push('latest')
-                }
-              }
-            }
-          }
-        } */
       }
     }
 }
