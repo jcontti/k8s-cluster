@@ -8,4 +8,3 @@ master:
     - apache-httpcomponents-client-4-api:4.5.13-1.0
     - authentication-tokens:1.4
     - aws-credentials:1.28.1
-    - workflow-aggregator:2.6
