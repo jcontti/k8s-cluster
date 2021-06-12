@@ -14,7 +14,8 @@ helm repo update
    --set master.resources.requests.cpu=2000m                     \
    --set master.resources.requests.memory=1000Mi                 \
    --set serviceAccount.create=false                             \
-    -f plugins.yaml                                              
+    -f plugins.yaml                                              \
+    -f jcasc-settings.yaml
 
 #chart=jenkinsci/jenkins
 #helm install jenkins -n jenkins -f jenkins-values.yaml $chart
@@ -31,7 +32,6 @@ echo http://$NODE_IP:$NODE_PORT/login
 ## see if it's working
 kubectl get pods -n jenkins
 kubectl get services -n jenkins
-kubectl get configmap -n jenkins
 kubectl get deployment -n jenkins
 
 # save pod name in a variable

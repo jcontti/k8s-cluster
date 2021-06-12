@@ -17,19 +17,12 @@ master:
               env:
               - key: "GITHUB_URL"
                 value: "https://github.com/jcontti"
-              - key: "JENKINS_PIPELINES_PROJ"
-                value: "eks-jenkins-pipelines"
-              - key: "DOCKER_IMAGES_PROJ"
-                value: "docker-images"
-          numExecutors: 10
-          remotingSecurity:
-            enabled: true
         jobs:
         - script: >
-        folder('devops') {
-            displayName('Devops')
-            description('Folder for Devops utils')
-        }
+            folder('devops') {
+                displayName('Devops')
+                description('Folder for Devops utils')
+            }
         - script: >
             folder('devops/docker-images') {
                 displayName('Docker images')
@@ -46,7 +39,7 @@ master:
                   scm {
                     git {
                       remote {
-                        url '\$BITBUCKET_URL/\$JENKINS_PIPELINES_PROJ.git'
+                        url '\$GITHUB_URL/\$JENKINS_PIPELINES_PROJ.git'
                         credentials 'BBsvcAccnt'
                       }
                       branch 'master'

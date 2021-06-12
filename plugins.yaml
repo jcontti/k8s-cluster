@@ -8,4 +8,13 @@ master:
     - apache-httpcomponents-client-4-api:4.5.13-1.0
     - authentication-tokens:1.4
     - aws-credentials:1.28.1
-    - workflow-aggregator:2.6
+    - aws-java-sdk:1.11.995
+    - bootstrap4-api:4.6.0-2
+    - bouncycastle-api:2.20
+    - branch-api:2.6.3
+    - build-user-vars-plugin:1.7
+    - checks-api:1.6.1
+    - cloudbees-folder:6.15
+    - command-launcher:1.5
+    - configuration-as-code:1.51
+    - job-dsl:1.77
