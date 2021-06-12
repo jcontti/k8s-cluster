@@ -28,10 +28,20 @@ master:
                 modernSCM:
                   scm:
                     git:
-                      credentialsId: "BBsvcAccnt"
+                      credentialsId: "GHsvcAccnt"
                       remote: "https://github.com/jcontti/k8s-cluster.git"
                       traits:
                       - "gitBranchDiscovery"
+        credentials:
+          system:
+            domainCredentials:
+            - credentials:
+              - usernamePassword:
+                  id: "GHsvcAccnt"
+                  scope: GLOBAL
+                  username: "GHsvcAccnt"
+                  password: ${CRED_GHSVCACCNT_PASSWD}
+                  description: "GitHub service account"
         jobs:
         - script: >
             folder('devops') {
@@ -54,14 +64,14 @@ master:
                   scm {
                     git {
                       remote {
-                        url 'https://github.com/guipal/apiSampleJava.git'
-                        credentials 'BBsvcAccnt'
+                        url '\$GITHUB_URL/\$JENKINS_PIPELINES_PROJ.git'
+                        credentials 'GHsvcAccnt'
                       }
                       branch 'master'
                       extensions {}
                     }
                   }
-                  scriptPath 'pipelines/Test_Automation.groovy'
+                  scriptPath 'pipelines/hellopipe.groovy'
                 }
               }
               logRotator {
