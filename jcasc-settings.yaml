@@ -19,6 +19,19 @@ master:
                 value: "https://github.com/jcontti"
               - key: "JENKINS_PIPELINES_PROJ"
                 value: "k8s-cluster"
+        unclassified:
+          globalLibraries:
+            libraries:
+            - defaultVersion: "master"
+              name: "jenkins-shared-library"
+              retriever:
+                modernSCM:
+                  scm:
+                    git:
+                      credentialsId: "BBsvcAccnt"
+                      remote: "https://github.com/jcontti/k8s-cluster.git"
+                      traits:
+                      - "gitBranchDiscovery"
         jobs:
         - script: >
             folder('devops') {
@@ -41,14 +54,14 @@ master:
                   scm {
                     git {
                       remote {
-                        url '\$GITHUB_URL/\$JENKINS_PIPELINES_PROJ.git'
+                        url 'https://github.com/guipal/apiSampleJava.git'
                         credentials 'BBsvcAccnt'
                       }
                       branch 'master'
                       extensions {}
                     }
                   }
-                  scriptPath 'pipelines/hellopipe.groovy'
+                  scriptPath 'pipelines/Test_Automation.groovy'
                 }
               }
               logRotator {
