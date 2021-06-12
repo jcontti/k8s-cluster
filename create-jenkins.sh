@@ -37,8 +37,10 @@ kubectl get deployment -n jenkins
 # save pod name in a variable
 myjenkinspod=$(kubectl -n jenkins get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
 
+# see if our containers are being created (copy-default-config, jenkins-sc-config) 
 kubectl describe pod $myjenkinspod -n jenkins
 
+# if we have problem with our plugins, here we should see it
 kubectl -n jenkins logs $myjenkinspod --all-containers 
 
 # see logs to debug problems:

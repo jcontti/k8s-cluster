@@ -17,6 +17,8 @@ master:
               env:
               - key: "GITHUB_URL"
                 value: "https://github.com/jcontti"
+              - key: "JENKINS_PIPELINES_PROJ"
+                value: "k8s-cluster"
         jobs:
         - script: >
             folder('devops') {
@@ -46,7 +48,7 @@ master:
                       extensions {}
                     }
                   }
-                  scriptPath 'devops/jenkins-lighthouse.groovy'
+                  scriptPath 'pipelines/hellopipe.groovy'
                 }
               }
               logRotator {
