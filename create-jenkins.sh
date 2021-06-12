@@ -11,9 +11,10 @@ helm repo update
  helm upgrade jenkins jenkinsci/jenkins --version 2.19.0 -n jenkins -i \
    --set master.tag=2.287                                        \
    --set master.serviceType=NodePort                             \
-   --set master.resources.requests.cpu=200m                     \
-   --set master.resources.requests.memory=100Mi                 \
-    -f plugins.yaml                                               \
+   --set master.resources.requests.cpu=2000m                     \
+   --set master.resources.requests.memory=1000Mi                 \
+   --set serviceAccount.create=false                             \
+    -f plugins.yaml                                              
 
 #chart=jenkinsci/jenkins
 #helm install jenkins -n jenkins -f jenkins-values.yaml $chart

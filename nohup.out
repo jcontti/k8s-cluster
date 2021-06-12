@@ -1,0 +1,55 @@
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Unable to listen on port 8080: Listeners failed to create with the following errors: [unable to create listener: Error listen tcp4 127.0.0.1:8080: bind: address already in use unable to create listener: Error listen tcp6 [::1]:8080: bind: address already in use]
+error: unable to listen on any of the requested ports: [{8080 8080}]
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+E0611 20:10:17.295431    1509 portforward.go:400] an error occurred forwarding 8080 -> 8080: error forwarding port 8080 to pod 7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e, uid : failed to find sandbox "7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e" in store: not found
+E0611 20:10:17.295505    1509 portforward.go:400] an error occurred forwarding 8080 -> 8080: error forwarding port 8080 to pod 7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e, uid : failed to find sandbox "7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e" in store: not found
+Handling connection for 8080
+E0611 20:10:17.304169    1509 portforward.go:400] an error occurred forwarding 8080 -> 8080: error forwarding port 8080 to pod 7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e, uid : failed to find sandbox "7b57a058989071de1b6497eca8c6dc76c7834e434d66218508eaf455521dc85e" in store: not found
+Handling connection for 8080
+Handling connection for 8080
+E0611 20:10:48.333699    1509 portforward.go:340] error creating error stream for port 8080 -> 8080: Timeout occured
+E0611 20:10:48.336695    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+E0611 20:11:18.341430    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+E0611 20:11:34.017540    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+E0611 20:11:34.017604    1509 portforward.go:340] error creating error stream for port 8080 -> 8080: Timeout occured
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+E0611 20:12:04.023290    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+E0611 20:12:19.642482    1509 portforward.go:340] error creating error stream for port 8080 -> 8080: Timeout occured
+E0611 20:12:19.644877    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+Handling connection for 8080
+E0611 20:12:49.650047    1509 portforward.go:362] error creating forwarding stream for port 8080 -> 8080: Timeout occured
+E0611 20:18:35.191061    1509 portforward.go:233] lost connection to pod
+./port-forward-jenkins.sh: line 3: :8080: command not found
+Error from server (NotFound): pods "jenkins-bfb54f5b4-t76m7" not found
+Error from server (NotFound): pods "jenkins-bfb54f5b4-t76m7" not found
+Error from server (NotFound): pods "jenkins-bfb54f5b4-t76m7" not found
