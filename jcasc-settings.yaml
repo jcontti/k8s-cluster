@@ -67,11 +67,11 @@ master:
                         url '\$GITHUB_URL/\$JENKINS_PIPELINES_PROJ.git'
                         credentials 'GHsvcAccnt'
                       }
-                      branch '*/master'
+                      branch ''
                       extensions {}
                     }
                   }
-                  scriptPath 'pipelines/hellopipe.groovy'
+                  scriptPath 'pipelines/my_app.groovy'
                 }
               }
               logRotator {
