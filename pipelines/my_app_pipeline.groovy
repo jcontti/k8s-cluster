@@ -20,7 +20,7 @@ pipeline {
         git credentialsId: 'GHsvcAccnt', url: "${GITHUB_PROJECT}.git"
       }
     }
-    /* stage('Build docker image') {
+    stage('Build docker image') {
       steps {
         container('dind') {
           script {
@@ -28,7 +28,7 @@ pipeline {
           }
         }
       }
-    } */
+    }
 /* 			stage('Push docker image') {
       steps {
         container('dind') {
