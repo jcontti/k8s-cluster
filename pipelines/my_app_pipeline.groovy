@@ -17,7 +17,7 @@ pipeline {
   stages {
     stage('Checkout project git') {
       steps {			
-        git credentialsId: 'GHsvcAccnt', url: "${GITHUB_PROJECT}.git", branch: GIT_BRANCH_NAME.trim()
+        git credentialsId: 'GHsvcAccnt', url: "${GITHUB_PROJECT}.git"
       }
     }
     /* stage('Build docker image') {
