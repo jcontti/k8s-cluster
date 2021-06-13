@@ -17,7 +17,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-            image = docker.build("jcontti/challenge-repo::${env.BUILD_ID}")
+              image = docker.build("jcontti/challenge-repo:${env.BUILD_ID}")
           }
         }
       }
