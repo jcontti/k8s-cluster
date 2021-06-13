@@ -148,3 +148,20 @@ master:
                 artifactNumToKeep(30)
               }
             }
+  sidecars:
+    configAutoReload:
+      env:
+        - name: REQ_TIMEOUT
+          value: "300"
+  containerEnv:
+    - name: SECRETS
+      value: /secrets/jcasc
+persistence:
+  volumes:
+    - name: jcasc-secrets
+      secret:
+        secretName: jcasc-secret
+  mounts:
+    - name: jcasc-secrets
+      mountPath: /secrets/jcasc
+      readOnly: true

@@ -12,13 +12,17 @@ kubectl cluster-info --context kind-k8s-cluster-1
 # view all nodes
 kubectl get nodes --all-namespaces
 
-
 # create namespaces to separate environments
 kubectl create namespace jenkins
 kubectl create namespace dev
 kubectl create namespace production
 
 ####### set up Jenkins server
+
+# secrets...
+kubectl create secret generic jcasc-secret -n jenkins \
+  --from-literal=CRED_GHSVCACCNT_PASSWD=$(aws secretsmanager get-secret-value --secret-id jenkins-svcaccounts --region us-east-2 --query SecretString --output text | jq -r .credGhsvcaccntPasswd) \
+  --dry-run=client -o yaml | kubectl apply -f -
 
 # create persisten volume for jenkins 
 kubectl apply -f jenkins-volume.yaml 
