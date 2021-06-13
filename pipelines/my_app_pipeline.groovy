@@ -37,10 +37,12 @@ pipeline {
     stage('Deploy EKS') {   
       steps {
         script {
-          kubectl -n jenkins run --image="jcontti/challenge-repo:${env.BUILD_ID}" --replicas=2 my-pod
-          kubectl -n jenkins expose deployment/my-pod --port=8081 --name=my-pod-svc --type=NodePort
-          kubectl get pods -n jenkins
-          kubectl get svc -n jenkins
+          sh """
+            kubectl -n jenkins run --image="jcontti/challenge-repo:${env.BUILD_ID}" --replicas=2 my-pod
+            kubectl -n jenkins expose deployment/my-pod --port=8081 --name=my-pod-svc --type=NodePort
+            kubectl get pods -n jenkins
+            kubectl get svc -n jenkins
+          """
         }
       }
     }
