@@ -25,14 +25,13 @@ pipeline {
  		stage('Push docker image') {
       steps {
         container('dind') {
-            script {
-              docker.withRegistry('https://hub.docker.com') {}
-            }
-            script {
+          script {
+            docker.withRegistry('https://hub.docker.com') {
               image.push("${env.BUILD_NUMBER}") 
               image.push('latest')
             }
           }
+        }
       }
     }
   }
