@@ -17,7 +17,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-              image = docker.build("my-docker-image")
+              image = docker.build("my-image:${env.BUILD_ID}")
           }
         }
       }
@@ -29,7 +29,7 @@ pipeline {
               docker.withRegistry('https://hub.docker.com') {}
             }
             script {
-              image.push("${BUILD_NUMBER}-${random_suffix}")
+              image.push("${env.BUILD_NUMBER}") 
               image.push('latest')
             }
           }
