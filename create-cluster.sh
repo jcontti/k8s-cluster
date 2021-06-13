@@ -22,7 +22,7 @@ kubectl create namespace production
 # secrets: Github, DockerHub
 kubectl create secret generic jcasc-secret -n jenkins \
   --from-literal=CRED_GHSVCACCNT_PASSWD=$(aws secretsmanager get-secret-value --secret-id jenkins-svcaccounts --region us-east-2 --query SecretString --output text | jq -r .credGhsvcaccntPasswd) \
-  --from-literal=CRED_DHSVCACCNT_PASSWD=$(aws secretsmanager get-secret-value --secret-id jenkins-svcaccounts-dh --region us-east-2 --query SecretString --output text | jq -r .credDhsvcaccntPasswd) \
+  --from-literal=CRED_DHSVCACCNT_PASSWD=$(aws secretsmanager get-secret-value --secret-id jenkins-svcaccounts --region us-east-2 --query SecretString --output text | jq -r .credDhsvcaccntPasswd) \
   --dry-run=client -o yaml | kubectl apply -f -
 
 # create persisten volume for jenkins 

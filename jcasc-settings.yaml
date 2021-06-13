@@ -114,7 +114,7 @@ master:
               - usernamePassword:
                   id: "DHsvcAccnt"
                   scope: GLOBAL
-                  username: "DHsvcAccnt"
+                  username: "jcontti"
                   password: ${CRED_DHSVCACCNT_PASSWD}
                   description: "DockerHub service account"
         jobs:
