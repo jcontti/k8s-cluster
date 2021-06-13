@@ -22,19 +22,17 @@ pipeline {
         }
       }
     }
-/* 			stage('Push docker image') {
+ 		stage('Push docker image') {
       steps {
         container('dind') {
-          withAWS(region: config.region, credentials: config.awsCred) {
-            sh ecrLogin()
+          docker.withRegistry('https://hub.docker.com') {
             script {
-              random_suffix = utils.getRandomString(5)
               image.push("${BUILD_NUMBER}-${random_suffix}")
               image.push('latest')
             }
           }
         }
       }
-    } */
+    }
   }
 }
