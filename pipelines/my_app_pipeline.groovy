@@ -17,7 +17,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-              image = docker.build("my-image:${env.BUILD_ID}")
+            image = docker.build("jcontti/challenge-repo::${env.BUILD_ID}")
           }
         }
       }
@@ -26,10 +26,8 @@ pipeline {
       steps {
         container('dind') {
           script {
-            docker.withRegistry('https://hub.docker.com') {
-              image.push("${env.BUILD_NUMBER}") 
-              image.push('latest')
-            }
+            image.push("${env.BUILD_NUMBER}") 
+            image.push('latest')
           }
         }
       }
