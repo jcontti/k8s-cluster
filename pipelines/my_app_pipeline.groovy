@@ -13,16 +13,11 @@ pipeline {
         git credentialsId: 'GHsvcAccnt', url: "${GITHUB_PROJECT}.git"
       }
     }
-    stage('Configure pipeline') {
-      steps {			
-        script {
-          dockerImage = "mydockerimage"
-        }
     stage('Build docker image') {
       steps {
         container('dind') {
           script {
-              image = docker.build(dockerImage, ".")
+              image = docker.build("my-docker-image")
           }
         }
       }
