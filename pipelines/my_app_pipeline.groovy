@@ -26,8 +26,10 @@ pipeline {
       steps {
         container('dind') {
           script {
-            image.push("${env.BUILD_NUMBER}") 
-            image.push('latest')
+            docker.withRegistry('', 'DHsvcAccnt') {
+              image.push("${env.BUILD_NUMBER}") 
+              image.push('latest')
+            }
           }
         }
       }

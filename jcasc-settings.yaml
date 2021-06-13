@@ -111,6 +111,12 @@ master:
                   username: "GHsvcAccnt"
                   password: ${CRED_GHSVCACCNT_PASSWD}
                   description: "GitHub service account"
+              - usernamePassword:
+                  id: "DHsvcAccnt"
+                  scope: GLOBAL
+                  username: "DHsvcAccnt"
+                  password: ${CRED_DHSVCACCNT_PASSWD}
+                  description: "DockerHub service account"
         jobs:
         - script: >
             folder('devops') {
