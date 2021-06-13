@@ -26,7 +26,7 @@ pipeline {
       steps {
         container('dind') {
           script {
-            docker.withRegistry('', 'DHsvcAccnt') {
+            docker.withRegistry('https://registry.hub.docker.com', 'DHsvcAccnt') {
               image.push("${env.BUILD_NUMBER}") 
               image.push('latest')
             }
